@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "SVRZK2IoNFY=",
+  "success": true,
+  "projectFilePath": "/Users/taylantaskin/Desktop/programming languages/calculator py and cs/Calculator.cs/Calculator.cs.csproj",
+  "expectedPackageFiles": [
+    "/Users/taylantaskin/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
