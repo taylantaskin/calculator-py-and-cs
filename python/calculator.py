@@ -55,22 +55,29 @@ def perform_basic_calculation():
     print("d. Divide")
     basic_choice = input("Choose an operation : ")
 
-    x = get_number("Enter first number: ")
-    y = get_number("Enter second number: ")
+def get_numbers():
+    while True:
+        try:
+            x = float(input("Enter first number: "))
+            y = float(input("Enter second number: "))
+            return x, y
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
 
-    if basic_choice == 'a':
+def calculate(x, y, operation):
+    if operation == 'a':
         result = add(x, y)
         print(f"Result: {result}")
         return f"Added {x} + {y} = {result}"
-    elif basic_choice == 'b':
+    elif operation == 'b':
         result = subtract(x, y)
         print(f"Result: {result}")
         return f"Subtracted {x} - {y} = {result}"
-    elif basic_choice == 'c':
+    elif operation == 'c':
         result = multiply(x, y)
         print(f"Result: {result}")
         return f"Multiplied {x} * {y} = {result}"
-    elif basic_choice == 'd':
+    elif operation == 'd':
         result = divide(x, y)
         print(f"Result: {result}")
         return f"Divided {x} / {y} = {result}"
@@ -88,18 +95,19 @@ def handle_user_choice(history):
         choice = user_choice()
 
         if choice == '1':
-            calculation_result = perform_basic_calculation()
+            basic_choice = input("Choose operation: (a)dd, (b)subtract, (c)multiply, (d)ivide: ")
+            x, y = get_numbers()
+            calculation_result = calculate(x, y, basic_choice)
             if calculation_result:
                 history.append(calculation_result)
 
         elif choice == '2':
             x = get_number("Enter number to find the square root: ")
-            result = square_root(x)
+            result = math.sqrt(x)
             print(f"Result: {result}")
             history.append(f"Square root of {x} = {result}")
 
         elif choice == '3':
-            print("\nHistory of calculations:")
             for entry in history:
                 print(entry)
 
@@ -110,9 +118,9 @@ def handle_user_choice(history):
 
         else:
             print("Invalid choice! Please try again.")
-
 def main():
     history = load_history()
     handle_user_choice(history)  
+    save_history(history)
 
 main()
