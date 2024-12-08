@@ -5,8 +5,10 @@ using Newtonsoft.Json;
 
 class Program
 {
-    static string historyFile = "calculation_history.json";
-
+    static string historyFile = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
+        "shared_calculation_history.json"
+    );
     static List<string> LoadHistory()
     {
         if (File.Exists(historyFile))
