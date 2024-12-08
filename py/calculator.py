@@ -1,7 +1,8 @@
 import json
 import math
+import os
 
-history_file = 'calculation_history.json'
+history_file = os.path.expanduser("~/Documents/shared_calculation_history.json")
 
 def load_history():
     try:
